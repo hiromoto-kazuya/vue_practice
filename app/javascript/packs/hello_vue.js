@@ -7,10 +7,29 @@
 
 import Vue from 'vue/dist/vue.esm'
 
-const app = new Vue({
-  el: '#hello',
+var app = new Vue({
+  el: '#app',
   data: {
-    message: "Can you say hello?"
+    // テキストのバインディング
+    message: "Can you say hello?",
+
+    // フォーム入力との同期
+    synchronizedmessage: '初期メッセージ',
+
+    // 繰り返しの描画
+    list: ['りんご', 'バナナ', 'いちご'],
+
+    // 条件分岐
+    show: true,
+
+    // トランジション&アニメーション
+    showAnime: true,
+  },
+  // イベントの利用
+  methods: {
+    handleClick: function(event) {
+      alert(event.target)
+    }
   }
 })
 

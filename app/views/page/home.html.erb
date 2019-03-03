@@ -1,4 +1,27 @@
-<div id = "hello">
+<div id = "app">
+  <!-- テキストのバインディング -->
   <p>{{ message }}</p>
+
+  <!-- フォーム入力との同期 -->
+  <p>{{ synchronizedmessage }}</p>
+  <input v-model = "synchronizedmessage" />
+
+  <!-- 繰り返しの描画 -->
+  <ol>
+    <li v-for = "item in list">{{ item }}</li>
+  </ol>
+
+  <!-- 条件分岐 -->
+  <p v-if = "show">Hello Vue.js!</p>
+
+  <!-- イベントの利用 -->
+  <button v-on:click = "handleClick">Click</button>
+
+  <!-- トランジション&アニメーション -->
+  <button v-on:click = "showAnime=!showAnime">切り替え</button>
+  <transition>
+    <p v-if = "showAnime">アニメーション</p>
+  </transition>
 </div>
+
 <%= javascript_pack_tag 'hello_vue' %>
