@@ -6,11 +6,6 @@
   <p>{{ synchronizedmessage }}</p>
   <input v-model = "synchronizedmessage" />
 
-  <!-- 繰り返しの描画 -->
-  <ol>
-    <li v-for = "item in list">{{ item }}</li>
-  </ol>
-
   <!-- 条件分岐 -->
   <p v-if = "show">Hello Vue.js!</p>
 
@@ -22,6 +17,26 @@
   <transition>
     <p v-if = "showAnime">アニメーション</p>
   </transition>
+
+  <!-- カウント -->
+  <p>{{ count }}回クリックしました</p>
+  <button v-on:click="increments">カウントを増やす</button>
+
+  <br />
+  <br />
+  <!-- リストデータ表示と更新 -->
+  名前<input v-model="name">
+  <button v-on:click="doAdd">モンスターを追加</button>
+  <ul>
+    <li v-for="(item, index) in list" v-bind:key="item.id" v-if="item.hp">
+      ID:{{ item.id }}, NAME:{{ item.name }}, HP:{{ item.hp }}
+      <span v-if="item.hp < 50">もうすぐ倒せそう</span>
+      <button v-on:click="doAttack(index)">攻撃する</button>
+      <button v-on:click="doRemove(index)">ポケモンを削除</button>
+    </li>
+  </ul>
+
+  <pre>{{ $data }}</pre>
 </div>
 
 <%= javascript_pack_tag 'hello_vue' %>

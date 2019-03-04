@@ -16,19 +16,49 @@ var app = new Vue({
     // フォーム入力との同期
     synchronizedmessage: '初期メッセージ',
 
-    // 繰り返しの描画
-    list: ['りんご', 'バナナ', 'いちご'],
+    // リストデータ表示
+    list: [
+      { id: 1, name: 'ポッポ', hp: 100 },
+      { id: 2, name: 'ストライク', hp: 200 },
+      { id: 3, name: 'サイドン', hp: 300 },
+    ],
 
     // 条件分岐
     show: true,
 
     // トランジション&アニメーション
     showAnime: true,
+
+    // カウント
+    count: 0,
   },
-  // イベントの利用
+
   methods: {
+    // イベントの利用
     handleClick: function(event) {
       alert(event.target)
+    },
+    // カウント
+    increments: function() {
+      this.count += 1
+    },
+    // リストデータ更新
+    doAdd: function() {
+      var max = this.list.reduce(function(a, b) {
+        return a > b.id ? a : b.id
+      }, 0)
+      this.list.push({
+        id: max + 1,
+        name: this.name,
+        hp: 500
+      })
+    },
+    // リストデータ削除
+    doRemove: function(index) {
+      this.list.splice(index, 1)
+    },
+    doAttack: function(index) {
+      this.list[index].hp -= 10
     }
   }
 })
