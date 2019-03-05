@@ -1,0 +1,11 @@
+<div id = "app">
+  <p>{{ count }}</p>
+  <button @click="count++">クリック</button>
+
+  <img src="assets/844_full.jpg" @load="show=true" :class="{hide: !show}">
+
+  <input :value="message" @input="handleInput">
+  <pre>{{ $data }}</pre>
+</div>
+
+<%= javascript_pack_tag 'chapter-three' %>
