@@ -1,0 +1,34 @@
+<div id="app">
+  <!-- 絞り込みラジオボタン -->
+  <!-- ToDo テーブル -->
+  <table>
+    <thead>
+      <tr>
+        <th class="id">ID</th>
+        <th class="comment">コメント</th>
+        <th class="state">状態</th>
+        <th class="button">-</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in todos" :key="item.id">
+        <th>{{ item.id }}</th>
+        <th>{{ item.comment }}</th>
+        <td class="state">
+          <button>{{ item.state }}</button>
+        </td>
+        <td class="button">
+          <button>削除</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 新規登録フォーム -->
+  <h2>新規タスクの追加</h2>
+  <form class="add-form" @submit.prevent="doAdd">
+    コメント<input type="text" ref="comment">
+    <button type="submit">追加</button>
+  </form>
+</div>
+
+<%= javascript_pack_tag 'todo' %>
